@@ -8,3 +8,5 @@ months = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
 
 PRINT "Month:", months[num - 1]
+//I did this in 2 minutes
+
