@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main() 
+{
+float P, R, T;
+printf("Enter value of principle.\nIt should be between (Rs. 100-1000000): ");
+scanf("%f", &P);
+while (P < 100 || P > 1000000) 
+{
+printf("Invalid! Enter again: ");
+scanf("%f", &P);
+}
+printf("Enter rate of interest.\nIt should be between (5-10%): ");
+scanf("%f", &R);
+while (R < 5 || R > 10) 
+{        
+printf("Invalid! Enter again: ");
+scanf("%f", &R);
+}
+printf("Enter time period.\nIt should be between (1-10 years): ");
+scanf("%f", &T);
+while (T < 1 || T > 10) 
+{
+printf("Invalid! Enter again: ");
+scanf("%f", &T);
+}
+float interest = (P * R * T) / 100;
+float amount = P + interest;
+printf("Interest: Rs. %.2f\n", interest);
+printf("Amount: Rs. %.2f\n", amount);
+return 0;
+}
