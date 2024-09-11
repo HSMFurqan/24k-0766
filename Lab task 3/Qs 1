@@ -1,0 +1,9 @@
+The problem with code is that the value is defined as an integer which can only store 4-bits of data but the value is larger than 4-bits.
+To solve this problem we can do it by initializing it as a long integer,in  the following way;
+
+#include <stdio.h>
+int main() {
+long testInteger=3000000000;
+printf("Number is %ld",testInteger);
+return 0;
+}
