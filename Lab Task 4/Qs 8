@@ -1,0 +1,42 @@
+#include <stdio.h>
+int main(){
+ int a;
+ printf("Enter a number : ");
+ scanf("%d",&a);
+ if (a>=1 &&a<=9){
+     switch(a){
+         case 1:
+         printf("Your Answer is : one ");
+         break;
+         case 2:
+         printf("Your Answer is : two");
+         break;
+         case 3:
+         printf("Your Answer is : three");
+         break;
+         case 4:
+         printf("Your Answer is : four");
+         break;
+         case 5:
+         printf("Your Answer is : five");
+         break;
+         case 6:
+         printf("Your Answer is : six");
+         break;
+         case 7:
+         printf("Your Answer is : seven");
+         break;
+         case 8:
+         printf("Your Answer is : eight");
+         break;
+         case 9:
+         printf("Your Answer is : nine");
+         break;
+     }
+ }
+  else if (a>9){
+        printf("Your enter : greater than 9");
+    }
+else 
+    printf("Your enter : Invalid input");
+return 0;}
