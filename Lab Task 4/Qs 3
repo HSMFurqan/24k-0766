@@ -6,9 +6,8 @@ printf("Enter number:");
 scanf("%f",&a);
 printf("Enter number:");
 scanf("%f",&b);
-getchar();
 printf("Enter operator:");
-scanf("%c",&op);
+scanf(" %c",&op);
 switch(op){
 case '+':
 		c=a+b;
