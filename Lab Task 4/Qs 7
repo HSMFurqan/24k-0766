@@ -1,0 +1,26 @@
+#include <stdio.h>
+int main(){
+ int c_id;
+ float units,bill,upc;
+ printf("Welcome to Local Electric Company:\n");
+ printf("Enter Customer id : ");
+ scanf("%d",&c_id);
+ printf("Enter no of units:");
+ scanf("%f",&units);
+ if (units<=199){
+     bill=units*16.20;
+ }
+ else if (units>=200 && units<=300){
+    bill=units*20.10;
+ }
+else if (units>=300 && units<=500){
+    bill=units*27.10;
+}else if (units>500){
+    bill=units*35.90;
+}
+if (bill>=18000){
+    bill+=bill*.15;
+}
+printf("Your Bill for the month is : %.2f\n",bill);
+printf("Total units consumed : %.0f ",units);
+return 0;}
