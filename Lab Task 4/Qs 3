@@ -10,22 +10,21 @@ printf("Enter operator:");
 scanf(" %c",&op);
 switch(op){
 case '+':
-		c=a+b;
+c=a+b;
 break;
 case '-':
-		c=a-b;
+c=a-b;
 break;
 case '*':
-		c=a*b;
+c=a*b;
 break;
 case '/':
-		if(b==0){
-			printf("Mathematical error");
-		}
-	    else{
-	         c=a/b;  }
-break;
-    	}
-printf("\nResult=%.2f",c);
-    return 0;
+if(b==0){
+printf("Mathematical error");
 }
+else{
+c=a/b;  }
+break;
+}
+printf("\nResult=%.2f",c);
+return 0;}
