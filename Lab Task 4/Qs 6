@@ -1,0 +1,25 @@
+#include <stdio.h>
+int main(){
+ float op,dp,sa;
+ printf("Enter Price of the item :");
+ scanf("%f",&op);
+ if (op>=500 && op<=2000){
+     dp=op*(.95);
+ }
+ else if(op>=2000 && op<=4000){
+     dp=op*(.9);
+ }
+ else if(op>=4000 && op<=6000){
+     dp=op*(.8);
+ }
+  else if(op>=6000){
+     dp=op*(.65);
+ }
+ else {
+     printf("There is no discount on item under 500/-");
+ }
+printf("Orignal Price: Rs.%.2f\n",op);
+printf("Discounted Price: Rs.%.2f\n",dp);
+printf("Amount saved: Rs.%.2f\n",sa=op-dp);
+return 0;
+}
