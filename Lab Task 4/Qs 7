@@ -5,7 +5,7 @@ int main(){
  printf("Welcome to Local Electric Company:\n");
  printf("Enter Customer id : ");
  scanf("%d",&c_id);
- printf("Enter no of units:");
+ printf("Enter no of units : ");
  scanf("%f",&units);
  if (units<=199){
      bill=units*16.20;
