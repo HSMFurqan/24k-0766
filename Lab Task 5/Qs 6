@@ -1,0 +1,13 @@
+#include <stdio.h>
+int main()
+{
+int x;
+x = 5 > 8 ? 10 : 1 != 2 < 5 ? 20 : 30;
+printf("Value of x : %d",x);
+return 0;
+}
+Explain why the output is 30
+The output is 30 because: 
+1. The first condition (5 > 8) is false, so we evaluate the second expression.
+2. In the second expression, 1 != 2 < 5 evaluates to false (0).
+3. Therefore, x is assigned the value that is after : and i.e 30, which is printed out .
