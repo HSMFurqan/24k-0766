@@ -1,0 +1,43 @@
+#include <stdio.h>
+int main() {
+    char coffeeType;
+    int isDouble, isManual;
+    float totalTime = 0;
+    printf("Enter coffee type (B for Black, W for White): ");
+    scanf(" %c", &coffeeType); 
+    printf("Is the cup size double? (1 for Yes, 0 for No): ");
+    scanf("%d", &isDouble);
+    printf("Is the coffee manual? (1 for Yes, 0 for No): ");
+    scanf("%d", &isManual);
+     switch (coffeeType) {
+        case 'W': 
+            totalTime += 15; 
+            totalTime += 15; 
+            totalTime += 20; 
+            totalTime += 2;  
+            totalTime += 4;  
+            totalTime += 20; 
+            break;
+        case 'B': 
+            totalTime += 20; 
+            totalTime += 20; 
+            totalTime += 25; 
+            totalTime += 15; 
+            totalTime += 25; 
+            break;
+        default:
+            printf("Invalid coffee type! Please enter 'B' or 'W'.\n");
+            return 0; 
+    }
+    if (isDouble) {
+        totalTime *= 1.5;
+    }
+    printf("Total time to make the coffee: %.2f minutes\n", totalTime);
+    if (isManual) {
+        printf("Manual coffee making in progress...\n");
+    } else {
+        printf("Automatic coffee making in progress...\n");
+    }
+
+    return 0;
+}
