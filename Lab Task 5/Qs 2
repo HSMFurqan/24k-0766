@@ -1,0 +1,15 @@
+#include <stdio.h>
+int sleepIn(int weekday, int vacation) {
+    return !weekday || vacation;
+}
+int main() {
+    
+    int weekday1 = 0, vacation1 = 0;  
+    int weekday2 = 1, vacation2 = 0;  
+    int weekday3 = 0, vacation3 = 1;  
+    printf("sleepIn(0, 0) -> %s\n", sleepIn(weekday1, vacation1) ? "true" : "false");
+    printf("sleepIn(1, 0) -> %s\n", sleepIn(weekday2, vacation2) ? "true" : "false");
+    printf("sleepIn(0, 1) -> %s\n", sleepIn(weekday3, vacation3) ? "true" : "false");
+
+    return 0;
+}
