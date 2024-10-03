@@ -1,0 +1,13 @@
+#include <stdio.h>
+int main() {
+     int a ;
+     do{
+         if(a==0 || a==5){
+         printf("*       *\n");}
+         else
+         printf("* * * * *\n");
+         a++;
+     }
+     while(a<=5);
+    return 0;
+}
