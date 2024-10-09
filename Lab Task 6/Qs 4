@@ -1,0 +1,18 @@
+#include <stdio.h>
+int main() {
+    int n, o_n, r, result = 0;
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+    o_n = n;
+    while (o_n != 0) {
+        r = o_n % 10;
+        result += r * r * r;
+        o_n /= 10;
+    }
+    if (result == n) {
+        printf("%d is an Armstrong number.\n", n);
+    } else {
+        printf("%d is not an Armstrong number.\n", n);
+    }
+    return 0;
+}
