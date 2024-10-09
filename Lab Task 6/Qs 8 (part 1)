@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main() {
+     int a=65 ;
+     for(a; a<70; a++)
+     if (a==65 || a==69)
+       {printf("%c %c %c %c %c\n",a,a+1,a+2,a+3,a+4);
+       }
+    else if (a==66 || a==68)
+       {printf("  %c   %c\n",a+1,a+4);
+       }
+    else
+       {printf("    %c\n",a+2);
+       }
+    return 0;
+}
