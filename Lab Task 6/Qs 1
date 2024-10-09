@@ -1,0 +1,20 @@
+When creating a program that takes input from user , the WHILE LOOP is better.
+Here is an example 
+#include <stdio.h>
+int main() {
+    int userInput;
+    int total = 0;
+    while (1) {
+    printf("Enter a number\n(0 to stop) : ");
+    scanf("%d", &userInput);
+    if (userInput == 0) {
+        break;
+        }
+    total += userInput;
+    printf("Current total : %d\n", total);
+    }
+    printf("Program ended.\nFinal total : %d", total);
+    return 0;
+}
+You can see in this code you can take any input from user and it will add to it untill user write 0 .
+It is because we don`t know number of iterations and it also checks condition (for when to stop) and other factors also .
