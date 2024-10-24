@@ -1,0 +1,29 @@
+#include <stdio.h>
+int main() {
+    int startNumber, n;
+    int array[2][100][2]; 
+    int evenCount = 0;
+
+    printf("Enter a starting even number: ");
+    scanf("%d", &startNumber);
+    printf("Enter the number of pairs for even numbers: ");
+    scanf("%d", &n);
+    if (startNumber % 2 != 0) {
+        startNumber--;
+    }
+    for (int i = startNumber; i >= 0; i -= 2) {
+        if (evenCount < n) {
+            array[0][evenCount][0] = i;
+            array[0][evenCount][1] = i - 2;
+            evenCount++;
+        }
+        if (evenCount >= n) {
+            break;
+        }
+    }
+    printf("Even numbers:\n");
+    for (int j = 0; j < evenCount; j++) {
+        printf("[%d, %d]\n", array[0][j][0], array[0][j][1]);
+    }
+    return 0;
+}
