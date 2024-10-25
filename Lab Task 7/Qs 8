@@ -1,0 +1,43 @@
+#include <stdio.h>
+int main() {
+    char expression[100];
+    int num = 0;
+    int result = 0;
+    char operation = '+';
+    int i = 0;
+    printf("Enter an expression (e.g., 20+10-30): ");
+    scanf("%s", expression);
+    while (expression[i] != '\0') {
+        if (expression[i] >= '0' && expression[i] <= '9') {
+            num = num * 10 + (expression[i] - '0');
+        } else if (expression[i] == '+' || expression[i] == '-') {
+            if (num == 0 && operation != '+') {
+                printf("Invalid expression.\n");
+                return 0;
+            }
+            if (operation == '+') {
+                result += num;
+            } else if (operation == '-') {
+                result -= num;
+            }
+            operation = expression[i];
+            num = 0;
+        } else {
+            printf("Invalid character detected: %c\n", expression[i]);
+            return 0;
+        }
+        i++;
+    }
+    if (num != 0 || (expression[i - 1] == '+' || expression[i - 1] == '-')) {
+        if (operation == '+') {
+            result += num;
+        } else if (operation == '-') {
+            result -= num;
+        }
+    } else {
+        printf("Invalid expression.\n");
+        return 0;
+    }
+    printf("Result: %d\n", result);
+    return 0;
+}
