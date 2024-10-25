@@ -1,0 +1,18 @@
+#include <stdio.h>
+int main() {
+    int arr[] = {1, 2, 3, 2, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int count[size];
+    for (int i = 0; i < size; i++) {
+        count[i] = 0;
+    }
+    for (int i = 0; i < size; i++) {
+        count[arr[i]]++;
+        if (count[arr[i]] > 1) {
+            printf("Number %d occurs more than once.\n", arr[i]);
+            return 0;
+        }
+    }
+    printf("No duplicates found.\n");
+    return 0;
+}
