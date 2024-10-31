@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main() {
+    char words[5][20];
+    printf("Enter 5 words (max 20 characters each):\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%s", words[i]);
+    }
+    for (int i = 0; i < 5; i++) {
+        int start = 0;
+        int end = 0;
+        while (words[i][end] != '\0') {
+            end++;
+        }
+        end--;
+        int is_palindrome = 1;
+        while (start < end) {
+            if (words[i][start] != words[i][end]) {
+                is_palindrome = 0;
+                break;
+            }
+            start++;
+            end--;
+        }
+        if (is_palindrome) {
+            printf("%s: Palindrome\n", words[i]);
+        } else {
+            printf("%s: Not Palindrome\n", words[i]);
+        }
+    }
+    return 0;
+}
