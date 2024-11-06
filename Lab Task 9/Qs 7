@@ -1,0 +1,37 @@
+#include <stdio.h>
+void customStrcpy(char *dest, const char *src) {
+    while (*src) {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0';
+}
+void sortStrings(char arr[][20], int n) {
+    char temp[20];
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i][0] > arr[j][0]) {
+                customStrcpy(temp, arr[i]);
+                customStrcpy(arr[i], arr[j]);
+                customStrcpy(arr[j], temp);
+            }
+        }
+    }
+}
+int main() {
+    int n = 5;
+    char arr[5][20] = {"HELLO", "JELLO", "MELLO", "TELLO", "BELLO"};
+    printf("Original array:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%s ", arr[i]);
+    }
+    printf("\n");
+    sortStrings(arr, n);
+    printf("Sorted array:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%s ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
