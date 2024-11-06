@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<string.h>
+void customStrncat(char *dest, const char *src, int n) {
+    while (*dest) {
+        dest++;
+    }
+    for (int i = 0; i < n && src[i] != '\0'; i++) {
+        *dest = src[i];
+        dest++;
+    }
+    *dest = '\0';
+}
+int main() {
+    char dest[200], src[100];
+    int n;
+    printf("Enter the destination string: ");
+    fgets(dest, sizeof(dest), stdin);
+    dest[strcspn(dest, "\n")] = '\0';
+    printf("Enter the source string: ");
+    fgets(src, sizeof(src), stdin);
+    src[strcspn(src, "\n")] = '\0';
+    printf("Enter the number of characters to append: ");
+    scanf("%d", &n);
+    customStrncat(dest, src, n);
+    printf("Concatenated string: %s\n", dest);
+    return 0;
+}
