@@ -1,0 +1,40 @@
+#include <stdio.h>
+typedef struct {
+    double x;
+    double y;
+} Point;
+double sqrtApprox(double num) {
+    double guess = num / 2.0;
+    double epsilon = 0.00001;
+    while ((guess * guess - num) > epsilon || (guess * guess - num) < -epsilon) {
+        guess = (guess + num / guess) / 2.0;
+    }
+    return guess;
+}
+double calculateDistance(Point p1, Point p2) {
+    double dx = p2.x - p1.x;
+    double dy = p2.y - p1.y;
+    return sqrtApprox(dx * dx + dy * dy);
+}
+int isPointWithinRectangle(Point p, Point bottomLeft, Point topRight) {
+    return (p.x >= bottomLeft.x && p.x <= topRight.x &&
+            p.y >= bottomLeft.y && p.y <= topRight.y);
+}
+int main() {
+    Point p1, p2, bottomLeft, topRight;
+    printf("Enter coordinates of the first point (x y): ");
+    scanf("%lf %lf", &p1.x, &p1.y);
+    printf("Enter coordinates of the second point (x y): ");
+    scanf("%lf %lf", &p2.x, &p2.y);
+    printf("Enter coordinates of the bottom-left corner of the rectangle (x y): ");
+    scanf("%lf %lf", &bottomLeft.x, &bottomLeft.y);
+    printf("Enter coordinates of the top-right corner of the rectangle (x y): ");
+    scanf("%lf %lf", &topRight.x, &topRight.y);
+    printf("Distance between points: %.2f\n", calculateDistance(p1, p2));
+    if (isPointWithinRectangle(p2, bottomLeft, topRight)) {
+        printf("Point (%.2f, %.2f) lies within the rectangle.\n", p2.x, p2.y);
+    } else {
+        printf("Point (%.2f, %.2f) does not lie within the rectangle.\n", p2.x, p2.y);
+    }
+    return 0;
+}
