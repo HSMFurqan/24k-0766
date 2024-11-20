@@ -1,0 +1,24 @@
+#include <stdio.h>
+void checkTemperature(double temp) {
+    static int exceedCount = 0;
+    const double MAX_TEMPERATURE = 40.0;
+    if (temp > MAX_TEMPERATURE) {
+        exceedCount++;
+        printf("Temperature %.2f exceeds the maximum allowable temperature of %.2f°C.\n", temp, MAX_TEMPERATURE);
+    } else {
+        printf("Temperature %.2f is within the allowable limit of %.2f°C.\n", temp, MAX_TEMPERATURE);
+    }
+    printf("Number of times the temperature exceeded the limit: %d\n", exceedCount);
+}
+int main() {
+    int n;
+    double temp;
+    printf("Enter the number of temperature readings: ");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        printf("Enter temperature reading %d: ", i + 1);
+        scanf("%lf", &temp);
+        checkTemperature(temp);
+    }
+    return 0;
+}
