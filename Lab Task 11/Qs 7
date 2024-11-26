@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+typedef struct {
+    char name[100];
+    int year_established;
+    char departments[5][50];
+} Company;
+void displayCompanyDetails(Company company) {
+    printf("Company Name: %s\n", company.name);
+    printf("Year Established: %d\n", company.year_established);
+    printf("Departments:\n");
+    for (int i = 0; i < 5; i++) {
+        if (strlen(company.departments[i]) > 0) {
+            printf("  - %s\n", company.departments[i]);
+        }
+    }
+}
+int main() {
+    Company company;
+    printf("Enter company name: ");
+    fgets(company.name, sizeof(company.name), stdin);
+    company.name[strcspn(company.name, "\n")] = '\0';
+    printf("Enter year established: ");
+    scanf("%d", &company.year_established);
+    printf("Enter up to 5 department names (leave blank to stop):\n");
+    getchar();
+    for (int i = 0; i < 5; i++) {
+        printf("Department %d: ", i + 1);
+        fgets(company.departments[i], sizeof(company.departments[i]), stdin);
+        company.departments[i][strcspn(company.departments[i], "\n")] = '\0';
+        if (strlen(company.departments[i]) == 0) {
+            break;
+        }
+    }
+    printf("\nCompany Details:\n");
+    displayCompanyDetails(company);
+    return 0;
+}
