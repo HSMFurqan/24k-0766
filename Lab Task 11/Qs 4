@@ -1,0 +1,38 @@
+#include <stdio.h>
+typedef struct {
+    int maths;
+    int science;
+    int english;
+} Marks;
+typedef struct {
+    int roll_no;
+    char name[50];
+    Marks marks;
+} Student;
+float calculateAverage(Marks marks) {
+    return (marks.maths + marks.science + marks.english) / 3.0;
+}
+int main() {
+    Student students[5];
+    for (int i = 0; i < 5; i++) {
+        printf("Enter details for student %d\n", i + 1);
+        printf("Roll Number: ");
+        scanf("%d", &students[i].roll_no);
+        getchar();
+        printf("Name: ");
+        fgets(students[i].name, sizeof(students[i].name), stdin);
+        students[i].name[strcspn(students[i].name, "\n")] = '\0';
+        printf("Enter marks:\n");
+        printf("Maths: ");
+        scanf("%d", &students[i].marks.maths);
+        printf("Science: ");
+        scanf("%d", &students[i].marks.science);
+        printf("English: ");
+        scanf("%d", &students[i].marks.english);
+    }
+    for (int i = 0; i < 5; i++) {
+        float average = calculateAverage(students[i].marks);
+        printf("Student %d (%s) has an average mark of %.2f\n", students[i].roll_no, students[i].name, average);
+    }
+    return 0;
+}
