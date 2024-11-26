@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+void replaceWordInFile(const char *fileName, const char *oldWord, const char *newWord) {
+    FILE *file = fopen(fileName, "r+");
+    if (file == NULL) {
+        printf("Error: Could not open file.\n");
+        return;
+    }
+    fseek(file, 0, SEEK_END);
+    long fileSize = ftell(file);
+    fseek(file, 0, SEEK_SET);
+    char *fileContent = (char *)malloc(fileSize + 1);
+    if (fileContent == NULL) {
+        printf("Error: Could not allocate memory for file content.\n");
+        fclose(file);
+        return;
+    }
+    fread(fileContent, 1, fileSize, file);
+    fileContent[fileSize] = '\0';
+    char *pos = fileContent;
+    while ((pos = strstr(pos, oldWord)) != NULL) {
+        char *temp = (char *)malloc(strlen(fileContent) + strlen(newWord) - strlen(oldWord) + 1);
+        if (temp == NULL) {
+            printf("Error: Could not allocate memory for temporary content.\n");
+            free(fileContent);
+            fclose(file);
+            return;
+        }
+        strncpy(temp, fileContent, pos - fileContent);
+        temp[pos - fileContent] = '\0';
+        strcat(temp, newWord);
+        strcat(temp, pos + strlen(oldWord));
+        free(fileContent);
+        fileContent = temp;
+        pos += strlen(newWord);
+    }
+    freopen(fileName, "w", file);
+    fwrite(fileContent, 1, strlen(fileContent), file);
+    free(fileContent);
+    fclose(file);
+    printf("Word replacement complete.\n");
+}
+int main() {
+    char fileName[100];
+    char oldWord[50], newWord[50];
+
+    printf("Enter the file name: ");
+    scanf("%s", fileName);
+    printf("Enter the word to replace: ");
+    scanf("%s", oldWord);
+    printf("Enter the new word: ");
+    scanf("%s", newWord);
+    replaceWordInFile(fileName, oldWord, newWord);
+    return 0;
+}
