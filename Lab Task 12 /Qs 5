@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main() {
+    int n, studentIdLength;
+    char fullName[100], studentId[20], *dynamicArray;
+    printf("Enter the total number of characters in your full name (First Name + Last Name): ");
+    scanf("%d", &n);
+    getchar();
+    dynamicArray = (char *)malloc((n + 1) * sizeof(char));
+    if (dynamicArray == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+    printf("Enter your full name: ");
+    fgets(fullName, sizeof(fullName), stdin);
+    fullName[strcspn(fullName, "\n")] = '\0';
+    if (strlen(fullName) > n) {
+        printf("Error: The name exceeds the allocated size.\n");
+        free(dynamicArray);
+        return 1;
+    }
+    strcpy(dynamicArray, fullName);
+    printf("Enter your student ID: ");
+    fgets(studentId, sizeof(studentId), stdin);
+    studentId[strcspn(studentId, "\n")] = '\0';
+    studentIdLength = strlen(studentId);
+    dynamicArray = (char *)realloc(dynamicArray, (n + studentIdLength + 2) * sizeof(char));
+    if (dynamicArray == NULL) {
+        printf("Memory reallocation failed.\n");
+        return 1;
+    }
+    memmove(dynamicArray + studentIdLength + 1, dynamicArray, strlen(dynamicArray) + 1);
+    strncpy(dynamicArray, studentId, studentIdLength);
+    dynamicArray[studentIdLength] = ' ';
+    printf("Dynamic Array = \"%s\"\n", dynamicArray);
+    free(dynamicArray);
+    return 0;
+}
